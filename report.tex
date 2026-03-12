@@ -70,7 +70,7 @@
 
   \begin{tabular}{ll}
     \textbf{Team Leader:} & Ali Eren Çiftçi - 150220022 \\[0.5em]
-    \textbf{Team Member 1:} & Yavuz Selim Kara - 150220032 \\[0.5em]
+    \textbf{Team Member:} & Yavuz Selim Kara - 150220032 \\[0.5em]
   \end{tabular}
 
   \vfill
@@ -95,7 +95,7 @@ Our primary objectives are:
   \item Visualize the latent space using PCA and t-SNE dimensionality reduction.
 \end{enumerate}
 
-All experiments were implemented in PyTorch and executed on an Apple Silicon GPU (MPS backend).
+All experiments were implemented in PyTorch and executed on an Apple Silicon GPU (MPS backend) and an NVIDIA RTX 4060 GPU (CUDA backend).
 
 % ═══════════════════════════════════════════════════════════════════════════════
 \section{Dataset}
@@ -111,7 +111,12 @@ The MNIST dataset consists of $70{,}000$ grayscale images of handwritten digits 
 % ═══════════════════════════════════════════════════════════════════════════════
 \section{Autoencoder Architecture}
 
-We implement a Convolutional AutoEncoder (CAE) following a symmetric encoder-decoder design. The encoder applies three convolutional blocks to progressively extract and compress spatial features into a fixed-size latent vector. The decoder reconstructs the original image from the latent vector using three transposed convolution blocks.
+We implement a Convolutional AutoEncoder (CAE) following a symmetric encoder-decoder design. 
+Convolutional Neural Networks (CNNs) are selected for this architecture because they are inherently designed for processing 2D grid data like images. Unlike fully connected layers that flatten the input and lose local spatial context, CNNs preserve the spatial arrangements of pixels. They leverage local receptive fields and shared weights to efficiently capture structural visual features such as edges, curves, and shapes.
+
+Furthermore, CNNs perfectly complement the encoder-decoder paradigm. In the encoder pathway, standard convolutional layers progressively reduce the spatial dimensions while increasing the depth of feature maps, distilling the raw image into a compact latent representation. Symmetrically, the decoder employs transposed convolutions to reverse this spatial compression, structurally expanding the condensed latent features back into the original image resolution.
+
+The encoder applies three convolutional blocks to progressively extract and compress spatial features into a fixed-size latent vector. The decoder reconstructs the original image from the latent vector using three transposed convolution blocks.
 
 \subsection{Encoder}
 
@@ -228,7 +233,7 @@ The full architecture is summarised visually in Figure~\ref{fig:architecture}:
     Learning rate    & $10^{-3}$ \\
     Batch size       & 128 \\
     Epochs           & 15 \\
-    Device           & Apple Silicon GPU (MPS) \\
+    Device           & Apple Silicon GPU (MPS) and NVIDIA RTX 4060 \\
     Latent dims $d_z$& $\{2, 4, 8, 10, 16, 32, 64\}$ \\
     \bottomrule
   \end{tabular}
@@ -508,7 +513,7 @@ All code was implemented in Python 3 using PyTorch. The full source is available
   \item \textbf{Dimensionality reduction:} scikit-learn \texttt{PCA} and \texttt{TSNE}
   \item \textbf{Label assignment:} scipy \texttt{linear\_sum\_assignment}
   \item \textbf{Confusion matrices:} seaborn \texttt{heatmap}
-  \item \textbf{Hardware:} Apple Silicon MPS GPU
+  \item \textbf{Hardware:} Apple Silicon MPS GPU and NVIDIA RTX 4060 GPU
 \end{itemize}
 
 \end{document}
