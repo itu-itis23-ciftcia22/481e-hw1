@@ -69,10 +69,8 @@
   \rule{\linewidth}{1pt}\\[2cm]
 
   \begin{tabular}{ll}
-    \textbf{Team Leader:} & [Team Leader Name] \\[0.5em]
-    \textbf{Team Member 1:} & [Member 1 Name] \\[0.5em]
-    \textbf{Team Member 2:} & [Member 2 Name] \\[0.5em]
-    \textbf{Team Member 3:} & [Member 3 Name] \\
+    \textbf{Team Leader:} & Ali Eren Çiftçi - 150220022 \\[0.5em]
+    \textbf{Team Member 1:} & Yavuz Selim Kara - 150220032 \\[0.5em]
   \end{tabular}
 
   \vfill
@@ -252,7 +250,16 @@ Figure~\ref{fig:loss_curves} shows the train (solid) and test (dashed) MSE loss 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{output_loss_curve.png}
+  
+  % Top Image
+  \textbf{Train vs. Test MSE Loss - All Latent Dimensions}\par\vspace{0.5em}
+  \includegraphics[scale=0.42]{output_loss_curve1.png}
+  
+  \vspace{2em} % Adds some breathing room between the top and bottom images
+  
+  % Bottom Image
+  \includegraphics[scale=0.57]{output_loss_curve2.png}
+  
   \caption{Train (solid) vs.\ test (dashed) MSE loss curves for $d_z \in \{2,4,8,10,16,32,64\}$ over 15 epochs, shown in separate subplots. Larger latent spaces achieve consistently lower reconstruction error with no sign of overfitting.}
   \label{fig:loss_curves}
 \end{figure}
@@ -314,7 +321,18 @@ To understand how the encoder organises digit representations, we project the 10
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{output_pca.png}
+  
+  % Top Image Title
+  \textbf{Latent Space Visualizations using PCA}\par\vspace{0.5em}
+  
+  % Top Image
+  \includegraphics[width=\textwidth]{output_pca1.png}
+  
+  \vspace{2em} % Adds breathing room between the top and bottom images
+  
+  % Bottom Image
+  \includegraphics[width=\textwidth]{output_pca2.png}
+  
   \caption{PCA 2D projection of the test-set latent representations for all seven latent dimensions. Points are coloured by ground-truth digit class.}
   \label{fig:pca}
 \end{figure}
@@ -325,7 +343,18 @@ To understand how the encoder organises digit representations, we project the 10
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{output_tsne.png}
+  
+  % Top Image Title
+  \textbf{Latent Space Visualization using TSNE}\par\vspace{0.5em}
+  
+  % Top Image
+  \includegraphics[width=\textwidth]{output_tsne1.png}
+  
+  \vspace{2em} % Adds breathing room between the top and bottom images
+  
+  % Bottom Image
+  \includegraphics[width=\textwidth]{output_tsne2.png}
+  
   \caption{t-SNE 2D projection of the test-set latent representations for all seven latent dimensions. Points are coloured by ground-truth digit class.}
   \label{fig:tsne}
 \end{figure}
@@ -380,7 +409,6 @@ The following metrics are computed for each model:
     2  & 49.75 & 3.5806    & 7.9494  & 0.4504  \\
     4  & 31.63 & 12.9763   & 9.3814  & 1.3832  \\
     8  & 18.12 & 54.0719   & 13.4265 & 4.0272  \\
-    \rowcolor{bestblue!12}
     \textbf{10} & \textbf{16.75} & \textbf{85.7354} & \textbf{15.7605} & \textbf{5.4399} \\
     16 & 34.30 & 165.5327  & 19.4586 & 8.5069  \\
     32 & 38.13 & 283.1627  & 19.8551 & 14.2615 \\
@@ -405,9 +433,23 @@ The following metrics are computed for each model:
 
 \subsection{Confusion Matrices}
 
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{output.png}
+  
+  % First Image
+  \includegraphics[width=\textwidth]{output1.png}
+  
+  \vspace{1em} % Adds breathing room between the first and second images
+  
+  % Second Image
+  \includegraphics[scale=0.7]{output2.png}
+  
+  \vspace{1em} % Adds breathing room between the second and third images
+  
+  % Third Image
+  \includegraphics[width=\textwidth]{output3.png}
+  
   \caption{Confusion matrices for K-Means clustering (after Hungarian label mapping) across all latent dimensions. The starred matrix ($\bigstar$\,BEST) corresponds to $d_z=10$, which achieves the lowest PMS of 16.75\%.}
   \label{fig:confusion}
 \end{figure}
